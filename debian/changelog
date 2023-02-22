@@ -1,3 +1,13 @@
+unity (7.7.0+23.04.20230222.2-0ubuntu1) lunar; urgency=medium
+
+  [ Rudra Saraswat ]
+  * Added UWidgets, a new widget system for Unity based on Blighty
+  * Made the dash vertical and moved the scope bar to the top
+  * Increased the panel height to 30
+  * Added indicator-notifications as a Recommend
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Wed, 22 Feb 2023 18:38:29 +0000
+
 unity (7.6.0+22.10.20220913-0ubuntu1) kinetic; urgency=medium
 
   [ Rudra Saraswat ]
