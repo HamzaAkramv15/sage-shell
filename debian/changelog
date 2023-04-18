@@ -1,3 +1,10 @@
+unity (7.7.0+23.04.20230222.2-0ubuntu2) lunar; urgency=medium
+
+  [ Rudra Saraswat ]
+  * Remove indicator-messages due to crashes, add indicator-notifications
+
+ -- Dmitry Shachnev <mitya57@ubuntu.com>  Tue, 18 Apr 2023 21:41:06 +0300
+
 unity (7.7.0+23.04.20230222.2-0ubuntu1) lunar; urgency=medium
 
   [ Rudra Saraswat ]
