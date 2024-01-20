@@ -1,3 +1,9 @@
+unity (7.7.0+23.04.20230222.2-0ubuntu3) noble; urgency=medium
+
+  * No-change rebuild with Python 3.12 as default
+
+ -- Graham Inggs <ginggs@ubuntu.com>  Sat, 20 Jan 2024 09:14:50 +0000
+
 unity (7.7.0+23.04.20230222.2-0ubuntu2) lunar; urgency=medium
 
   [ Rudra Saraswat ]
