@@ -30,6 +30,8 @@ ifeq ($(DEB_HOST_ARCH),$(findstring $(DEB_HOST_ARCH), $(ignore_warnings_archs)))
   cmake_options += -DDISABLE_MAINTAINER_CXXFLAGS=ON
 endif
 
+cmake_options += -DENABLE_UNIT_TESTS=OFF
+
 override_dh_auto_configure:
 	dh_auto_configure -- $(cmake_options)
 
