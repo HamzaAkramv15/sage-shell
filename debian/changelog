@@ -1,3 +1,9 @@
+unity (7.7.0+23.04.20230222.2-0ubuntu5) noble; urgency=medium
+
+  * No-change rebuild against libglib2.0-0t64
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Mon, 11 Mar 2024 23:45:19 +0000
+
 unity (7.7.0+23.04.20230222.2-0ubuntu4) noble; urgency=medium
 
   * Disable the unit tests for now. The require C++ 14, while unity
