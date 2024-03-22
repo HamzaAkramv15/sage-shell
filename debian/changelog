@@ -1,3 +1,9 @@
+unity (7.7.0+23.04.20230222.2-0ubuntu6) noble; urgency=medium
+
+  * Fix build with -Werror=implicit-function-declaration.
+
+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Fri, 22 Mar 2024 15:12:30 +1300
+
 unity (7.7.0+23.04.20230222.2-0ubuntu5) noble; urgency=medium
 
   * No-change rebuild against libglib2.0-0t64

@@ -65,6 +65,7 @@ typedef struct {
 } BaseCanvas;
 
 void BaseCanvas__redraw(BaseCanvas * self);
+void BaseCanvas__on_draw(BaseCanvas * self, PyObject * args);
 
 #ifdef BASE_CANVAS_C
 // ---- METHODS ----
