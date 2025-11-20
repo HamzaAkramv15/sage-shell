@@ -41,7 +41,7 @@ std::vector<std::string> GetRemoved(std::list<std::string> const& old, std::list
 bool NeedToBeReordered(std::list<std::string> const& old, std::list<std::string> const& fresh);
 
 bool IsDesktopFilePath(std::string const& path);
-
+std::string NormalizeDesktopIdFromPath(std::string const& path);
 
 } // namespace impl
 } // namespace internal

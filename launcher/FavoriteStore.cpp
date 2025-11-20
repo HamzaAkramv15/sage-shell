@@ -20,7 +20,6 @@
 
 #include <NuxCore/Logger.h>
 #include <glib.h>
-
 #include "FavoriteStore.h"
 #include "FavoriteStorePrivate.h"
 
@@ -112,7 +111,8 @@ std::string FavoriteStore::ParseFavoriteFromUri(std::string const& uri) const
   // Matches application://desktop-id.desktop or application:///path/to/file.desktop
   if (fav.find(URI_PREFIX_APP) == 0 || fav.find(URI_PREFIX_FILE) == 0)
   {
-    std::string const& fav_value = fav.substr(prefix_pos);
+    std::string raw_value = fav.substr(prefix_pos);
+    std::string fav_value = unity::internal::impl::NormalizeDesktopIdFromPath(raw_value);
 
     if (fav_value.empty())
     {
@@ -133,6 +133,7 @@ std::string FavoriteStore::ParseFavoriteFromUri(std::string const& uri) const
     }
     else
     {
+      // --- PATCH: now returns normalized ID ---
       return URI_PREFIX_APP + fav_value;
     }
   }
@@ -144,5 +145,4 @@ std::string FavoriteStore::ParseFavoriteFromUri(std::string const& uri) const
   LOG_WARNING(logger) << "Unable to load Favorite for uri '" << fav << "'";
   return "";
 }
-
 }

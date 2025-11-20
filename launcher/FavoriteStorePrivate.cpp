@@ -124,15 +124,33 @@ bool NeedToBeReordered(std::list<std::string> const& old, std::list<std::string>
   return false;
 }
 
+// Normalize snap desktop paths:
+// /snap/app/123/meta/gui/app_app.desktop → app_app.desktop
+std::string NormalizeDesktopIdFromPath(std::string const& path)
+{
+  if (path.find("/snap/") == std::string::npos)
+    return path;
+
+  // Extract the basename
+  auto pos = path.find_last_of('/');
+  if (pos == std::string::npos)
+    return path;
+
+  return path.substr(pos + 1);
+}
+
 bool IsDesktopFilePath(std::string const& path)
 {
-  static const std::string desktop_ext = ".desktop";
-  auto path_len = path.length();
-  auto desktop_length = desktop_ext.length();
+  // Normalize snap paths first
+  std::string normalized = NormalizeDesktopIdFromPath(path);
 
-  if (path_len > desktop_length)
+  static const std::string desktop_ext = ".desktop";
+  auto path_len = normalized.length();
+  auto ext_len = desktop_ext.length();
+
+  if (path_len > ext_len)
   {
-    return path.compare(path_len - desktop_length, desktop_length, desktop_ext) == 0;
+    return normalized.compare(path_len - ext_len, ext_len, desktop_ext) == 0;
   }
 
   return false;

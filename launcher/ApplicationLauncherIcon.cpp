@@ -52,7 +52,18 @@ enum MenuItemType
   SEPARATOR,
   SIZE
 };
+
+// Normalize snap desktop file paths to stable desktop IDs
+std::string NormalizeDesktopId(std::string const& id)
+{
+  // If it's already just an ID, return it
+  if (id.find('/') == std::string::npos)
+    return id;
+  return id.substr(id.find_last_of('/') + 1);
 }
+
+}
+
 
 NUX_IMPLEMENT_OBJECT_TYPE(ApplicationLauncherIcon);
 
@@ -752,7 +763,7 @@ void ApplicationLauncherIcon::UpdateIconGeometries(std::vector<nux::Point3> cons
 
 void ApplicationLauncherIcon::UpdateRemoteUri()
 {
-  std::string const& desktop_id = app_->desktop_id();
+  std::string desktop_id = NormalizeDesktopId(app_->desktop_id());
 
   if (!desktop_id.empty())
   {
