@@ -25,6 +25,7 @@
 
 #include <UnityCore/GLibWrapper.h>
 #include <UnityCore/DesktopUtilities.h>
+#include <UnityCore/GLibSource.h>
 
 #include "ApplicationLauncherIcon.h"
 #include "FavoriteStore.h"
@@ -294,8 +295,6 @@ void ApplicationLauncherIcon::UpdateDesktopFile()
   if (!filename.empty())
   {
     // add a file watch to the desktop file so that if/when the app is removed
-    // we can remove ourself from the launcher and when it's changed
-    // we can update the quicklist.
     glib::Object<GFile> desktop_file(g_file_new_for_path(filename.c_str()));
     desktop_file_monitor_ = g_file_monitor_file(desktop_file, G_FILE_MONITOR_NONE,
                                                 nullptr, nullptr);
@@ -305,13 +304,19 @@ void ApplicationLauncherIcon::UpdateDesktopFile()
       [this, desktop_file] (GFileMonitor*, GFile*,  GFile*, GFileMonitorEvent event_type) {
       switch (event_type)
       {
-        case G_FILE_MONITOR_EVENT_DELETED:
+	case G_FILE_MONITOR_EVENT_DELETED:
         {
-          _source_manager.AddTimeoutSeconds(1, [this, desktop_file] {
+          _source_manager.AddTimeoutSeconds(5, [this, desktop_file] {
             if (!g_file_query_exists(desktop_file, nullptr))
             {
-              UnStick();
-              LogUnityEvent(ApplicationEventType::DELETE);
+              std::string desktop_id = NormalizeDesktopId(app_->desktop_id());
+              glib::Object<GDesktopAppInfo> desktopInfo(g_desktop_app_info_new(desktop_id.c_str()));
+
+              if (!desktopInfo)
+              {
+                UnStick();
+                LogUnityEvent(ApplicationEventType::DELETE);
+              }
             }
             return false;
           });
@@ -327,10 +332,6 @@ void ApplicationLauncherIcon::UpdateDesktopFile()
           break;
       }
     });
-  }
-  else if (app_->sticky())
-  {
-    UnStick();
   }
 
   if (old_uri != new_uri)

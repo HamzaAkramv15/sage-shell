@@ -23,6 +23,7 @@
 #include "FavoriteStore.h"
 #include "FavoriteStorePrivate.h"
 
+
 namespace unity
 {
 DECLARE_LOGGER(logger, "unity.favorite.store");
@@ -116,8 +117,16 @@ std::string FavoriteStore::ParseFavoriteFromUri(std::string const& uri) const
 
     if (fav_value.empty())
     {
-      LOG_WARNING(logger) << "Unable to load Favorite for uri '" << fav << "'";
-      return "";
+      if (raw_value.length() > 8 && 
+          raw_value.compare(raw_value.length() - 8, 8, ".desktop") == 0)
+      {
+         fav_value = raw_value;
+      }
+      else
+      {
+         LOG_WARNING(logger) << "Unable to load Favorite for uri '" << fav << "'";
+         return "";
+      }
     }
 
     if (fav_value[0] == '/' || fav.find(URI_PREFIX_FILE) == 0)
@@ -129,6 +138,7 @@ std::string FavoriteStore::ParseFavoriteFromUri(std::string const& uri) const
       else
       {
         LOG_WARNING(logger) << "Unable to load desktop file: " << fav_value;
+        return "";
       }
     }
     else
