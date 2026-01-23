@@ -1,3 +1,9 @@
+unity (7.7.0+23.04.20230222.2-0ubuntu9) resolute; urgency=medium
+
+  * No-change rebuild with Python 3.14 as default
+
+ -- Graham Inggs <ginggs@ubuntu.com>  Fri, 23 Jan 2026 15:03:37 +0000
+
 unity (7.7.0+23.04.20230222.2-0ubuntu8) plucky; urgency=medium
 
   * No-change rebuild for Python 3.13 as the default.
