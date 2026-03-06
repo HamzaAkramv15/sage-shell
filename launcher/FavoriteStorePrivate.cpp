@@ -61,7 +61,7 @@ void GetSignalAddedInfo(std::list<std::string> const& favs, std::vector<std::str
   }
   else if (!before)
   {
-    position = *(boost::prior(it));
+    position = *(std::prev(it));
   }
 
 }
