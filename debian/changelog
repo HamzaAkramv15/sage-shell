@@ -1,3 +1,15 @@
+unity (7.7.1+26.04.20260306-0ubuntu1) resolute; urgency=medium
+
+  * Bump version to 7.7.1, update C++ standard to C++14, replace
+    deprecated boost::prior with std::prev.
+  * Fix FTBFS in resolute, thanks to Lexi Ewald <info@darkgrave.de>
+    (LP: #2138942):
+    - add systemd destination fallback in data/CMakeLists.txt
+    - add missing <cstdint> and <algorithm> includes
+  * Bump debhelper compat from 9 to 13
+
+ -- Nadzeya Hutsko <nadzeya.hutsko@canonical.com>  Fri, 06 Mar 2026 14:06:16 +0100
+
 unity (7.7.0+23.04.20230222.2-0ubuntu9) resolute; urgency=medium
 
   * No-change rebuild with Python 3.14 as default
