@@ -23,6 +23,7 @@
 #include <sstream>
 #include "StandaloneWindowManager.h"
 #include "UScreen.h"
+#include <algorithm>
 
 // Entirely stubs for now, unless we need this functionality at some point
 

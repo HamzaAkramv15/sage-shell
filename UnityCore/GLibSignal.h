@@ -28,6 +28,7 @@
 #include <memory>
 #include <boost/noncopyable.hpp>
 #include <glib-object.h>
+#include <cstdint>
 
 namespace unity
 {
