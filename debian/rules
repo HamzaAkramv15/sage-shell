@@ -60,4 +60,4 @@ ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 endif
 
 %:
-	dh $@ --with translations,quilt,python3,migrations --parallel
+	dh $@ --with translations,quilt,python3 --parallel
