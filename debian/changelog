@@ -1,3 +1,10 @@
+unity (7.7.1+26.04.20260306-0ubuntu2) resolute; urgency=medium
+
+  * Stop using dh-migrations
+  * Remove unused Build-Depends: libunique-dev (LP: #2143626)
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Tue, 10 Mar 2026 04:26:28 -0400
+
 unity (7.7.1+26.04.20260306-0ubuntu1) resolute; urgency=medium
 
   * Bump version to 7.7.1, update C++ standard to C++14, replace
