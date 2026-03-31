@@ -1,3 +1,9 @@
+unity (7.7.0+23.04.20230222.2-0ubuntu9) plucky; urgency=medium
+
+  * Increase desktop file monitor timeout to prevent Snap unpinning
+
+ -- Kavish Advani <kavish@niieux.com>  Thu, 27 Nov 2025 14:49:54 -0500
+
 unity (7.7.1+26.04.20260306-0ubuntu2) resolute; urgency=medium
 
   * Stop using dh-migrations
