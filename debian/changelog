@@ -1,4 +1,4 @@
-unity (7.7.0+23.04.20230222.2-0ubuntu9) plucky; urgency=medium
+unity (7.7.1+26.04.20260306-0ubuntu3) resolute; urgency=medium
 
   * Increase desktop file monitor timeout to prevent Snap unpinning
 
