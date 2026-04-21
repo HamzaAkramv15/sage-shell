@@ -1,8 +1,9 @@
 unity (7.7.1+26.04.20260306-0ubuntu3) resolute; urgency=medium
 
+  [ Kavish Advani ]
   * Increase desktop file monitor timeout to prevent Snap unpinning
 
- -- Kavish Advani <kavish@niieux.com>  Thu, 27 Nov 2025 14:49:54 -0500
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Tue, 21 Apr 2026 11:58:42 -0400
 
 unity (7.7.1+26.04.20260306-0ubuntu2) resolute; urgency=medium
 
