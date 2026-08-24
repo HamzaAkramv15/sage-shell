@@ -111,16 +111,12 @@ add_custom_target (pre-distcheck
   COMMAND echo ""
        && echo "• Releasing Unity ${UNITY_VERSION}"
        && cd ${CMAKE_SOURCE_DIR}
-       && echo "• Generating ChangeLog"
-       && bzr log --gnu-changelog > ChangeLog
-       && echo "• Generating AUTHORS"
-       && bzr log --long --levels=0 | grep -e "^\\s*author:" | cut -d ":" -f 2 | sed "s/,/\n/g" | sed -r -f AUTHOR-glue | sort -u | uniq -i > AUTHORS
        && echo "• Running Distcheck"
   )
 
 add_custom_target (dist
   COMMAND echo "• Creating Tarball"
-       && bzr export --root=${ARCHIVE_NAME} ${CMAKE_BINARY_DIR}/${ARCHIVE_NAME}.tar.bz2
+       && git archive --format=tar.bz2 --prefix=${ARCHIVE_NAME}/ HEAD -o ${CMAKE_BINARY_DIR}/${ARCHIVE_NAME}.tar.bz2
        && echo "• Signing Tarball"
        && gpg --armor --sign --detach-sig ${CMAKE_BINARY_DIR}/${ARCHIVE_NAME}.tar.bz2
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
@@ -141,11 +137,8 @@ add_custom_target (distcheck
 add_dependencies(distcheck dist)
 
 add_custom_target (post-distcheck
-  COMMAND echo "• Committing Release"
-       && bzr commit -m\"Release ${UNITY_VERSION}\" --unchanged
-       && echo "• Tagging Release"
-       && bzr tag ${UNITY_VERSION}
-       && echo "• Unity ${UNITY_VERSION} is ready for release."
+  COMMAND echo "• Release ${UNITY_VERSION} passed distcheck."
+       && echo "• Create the Git commit and tag manually when ready."
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   )
 add_dependencies(post-distcheck distcheck)
