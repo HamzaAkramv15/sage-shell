@@ -297,6 +297,8 @@ add_subdirectory(UnityCore)
 add_subdirectory(guides)
 add_subdirectory(gnome)
 
+include(CTest)
+
 if (ENABLE_UNIT_TESTS)
   add_subdirectory(tests)
 else (ENABLE_UNIT_TESTS)
